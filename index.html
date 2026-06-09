@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+    <style>
+           @keyframes move {
+            0% {transform: translateY(20px);}
+            50% {transform: translateY(0px);}
+            100% {transform: translateY(20px);}
+        }
+        @keyframes change {
+            0% {background-image: url(Img/cam.png);}
+            20% {background-image: url(Img/Cam1.png);}
+            40% {background-image: url(Img/Cam2.png);}
+            60% {background-image: url(Img/Camera.png);}
+            80% {background-image: url(Img/shopping.png);}
+        }
+        @keyframes movE {
+            0% {transform: translateY(5px);}
+            50% {transform: translateY(0px);}
+            100% {transform: translateY(5px);}
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlashShot Camera Shop</title>
@@ -13,6 +32,11 @@
                 <p class="eyebrow">FlashShot</p>
                 <h1>Premium camera's voor iedere fotograaf</h1>
             </div>
+            <div class="HeaderTab">
+                <a class="Support" href="camera1.html"><b>Wie zijn wij?</b></a>
+                <a class="Support" href="Camera2.Html"><b>Contact</b></a>
+                <a class="Support" href="Camera3.html"><b></b></a>
+                </div>
             <div class="logo">
                 <img src="Img/Camera.png" alt="FlashShot logo">
             </div>
@@ -28,35 +52,42 @@
                 <a class="button" href="#products">Bekijk camera's</a>
             </div>
             <div class="hero-image">
-                <img src="Img/Camera.png" alt="FlashShot camera">
+                <img class="Pictures" src="Img/Camera.png" alt="FlashShot camera">
             </div>
         </section>
 
         <section id="products" class="products">
-            <h3>Onze bestsellers</h3>
+            <div class="products-header">
+                <h3>Onze bestsellers</h3>
+                <div class="product-nav">
+                    <button class="scroll-btn scroll-left" type="button" aria-label="Scroll links">&#8592;</button>
+                    <button class="scroll-btn scroll-right" type="button" aria-label="Scroll rechts">&#8594;</button>
+                </div>
+            </div>
             <div class="product-grid">
                 <article class="product-card">
-                   <a href="Camera4.html"><img src="Img/Cam1.png" alt=""></a>
-                    <h4>Sony DSC RX1</h4>
-                    <p>Compact en krachtig, perfect voor reisfotografie.</p>
-                    <span class="price">€899</span>
+                   <a href="Camera4.html"><img src="Img/Canon EOS R6.png" alt=""></a>
+                    <h4>Canon EOS R6</h4>
+                    <p><b>Canon EOS R6 – Full-frame systeemcamera met 20 MP sensor, zeer snelle autofocus, in-body stabilisatie en sterke prestaties bij weinig licht. Geschikt voor sport, events en video.</b></p>
+                    <span class="price">€2.200</span>
                 </article>
                 <article class="product-card">
-                    <a href="Camera3.html"><img src="Img/cam.png" alt=""></a>
-                    <h4>Sony A7 III + Tamron 28-75mm f/2.8 G2</h4>
-                    <p>Professionele systeemcamera met verwisselbare lenzen.</p>
-                    <span class="price">€1.199</span>
+                    <a href="Camera3.html"><img src="Img/Canon EOS R10.jpg" alt=""></a>
+                    <h4>Canon EOS R10</h4>
+                    <p><b>Canon EOS R10 – Compacte en krachtige systeemcamera met snelle autofocus, 24,2 MP sensor en 4K-video. Ideaal voor zowel fotografie als contentcreatie.</b></p>
+                    <span class="price">€1.080</span>
                 </article>
                 <article class="product-card">
-                    <a href="Camera2.Html"><img src="Img/Camera.png" alt=""></a>
-                    <h4>FlashShot Zoom</h4>
-                    <p>Perfecte keuze voor sport en natuurfotografie.</p>
-                    <span class="price">€999</span>
+                    <a href="Camera2.Html"><img src="Img/Nikon.png" alt=""></a>
+                    <h4>Nikon Z5 II</h4>
+                    <p><b>Nikon Z5 II – Krachtige full-frame systeemcamera met een 24,5 MP sensor, snelle autofocus, ingebouwde beeldstabilisatie en 4K-video. Ideaal voor fotografie, reizen en contentcreatie.</b></p>
+                    <span class="price">€1.499</span>
                 </article>
                 <article class="product-card">
-                    <a href="camera1.html"><img src="Img/shopping.png" alt=""></a>
-                    <h5>Coolpix P1100 Nikon</h5>
-                    <p>Een Vlotte camera die snelle foto's maakt perfect voor vogels of auto's</p>
+                    <a href="camera1.html"><img src="Img/Lumix.png" alt=""></a>
+                    <h5>Panasonic Lumix S5II</h5>
+                    <p><b>Panasonic Lumix S5II – Full-frame systeemcamera met 24,2 MP sensor, sterke autofocus (phase detect), ingebouwde stabilisatie en 6K/4K video. Populair voor zowel foto als video</b></p>
+                    <span class="price">€1.800</span>
                 </article>
             </div>
         </section>
@@ -77,6 +108,55 @@
                     }
                 }, { passive: false });
             });
+
+            document.querySelectorAll('.scroll-btn').forEach((button) => {
+                button.addEventListener('click', () => {
+                    const section = button.closest('.products');
+                    const grid = section ? section.querySelector('.product-grid') : null;
+
+                    if (!grid) return;
+
+                    const direction = button.classList.contains('scroll-right') ? 1 : -1;
+                    grid.scrollBy({ left: direction * 320, behavior: 'smooth' });
+                });
+            });
+
+            const picture = document.querySelector('.Pictures');
+            if (picture) {
+                const images = ['Img/Canon.png, '];
+                const defaultSrc = picture.getAttribute('src');
+                let intervalId = null;
+                let index = 0;
+
+                const startCycle = () => {
+                    if (intervalId) return;
+
+                    intervalId = window.setInterval(() => {
+                        index = (index + 1) % images.length;
+                        picture.style.opacity = '0';
+                        window.setTimeout(() => {
+                            picture.src = images[index];
+                            picture.style.opacity = '1';
+                        }, 180);
+                    }, 600);
+                };
+
+                const stopCycle = () => {
+                    if (intervalId) {
+                        window.clearInterval(intervalId);
+                        intervalId = null;
+                    }
+                    picture.style.opacity = '0';
+                    window.setTimeout(() => {
+                        picture.src = defaultSrc;
+                        picture.style.opacity = '1';
+                    }, 180);
+                    index = 0;
+                };
+
+                picture.addEventListener('mouseenter', startCycle);
+                picture.addEventListener('mouseleave', stopCycle);
+            }
         });
     </script>
 </body>
