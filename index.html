@@ -33,7 +33,7 @@
                 <h1>Premium camera's voor iedere fotograaf</h1>
             </div>
             <div class="HeaderTab">
-                <a class="Support" href="camera1.html"><b>Wie zijn wij?</b></a>
+                <a class="Support" href="camera1.html"><b>About Us</b></a>
                 <a class="Support" href="Camera2.Html"><b>Contact</b></a>
                 <a class="Support" href="Camera3.html"><b></b></a>
                 </div>
@@ -52,7 +52,9 @@
                 <a class="button" href="#products">Bekijk camera's</a>
             </div>
             <div class="hero-image">
-                <img class="Pictures" src="Img/Camera.png" alt="FlashShot camera">
+                <a class="hero-image-link" href="Camera4.html">
+                    <img class="Pictures" src="Img/Camera.png" alt="FlashShot camera">
+                </a>
             </div>
         </section>
 
@@ -70,24 +72,40 @@
                     <h4>Canon EOS R6</h4>
                     <p><b>Canon EOS R6 – Full-frame systeemcamera met 20 MP sensor, zeer snelle autofocus, in-body stabilisatie en sterke prestaties bij weinig licht. Geschikt voor sport, events en video.</b></p>
                     <span class="price">€2.200</span>
+                    <div class="product-hover-info">
+                        <img src="Img/Canon EOS R6.png" alt="Canon EOS R6">
+                        <p>Full-frame systeemcamera met snelle autofocus, sterke prestaties bij weinig licht en uitstekende video-kwaliteit.</p>
+                    </div>
                 </article>
                 <article class="product-card">
                     <a href="Camera3.html"><img src="Img/Canon EOS R10.jpg" alt=""></a>
                     <h4>Canon EOS R10</h4>
                     <p><b>Canon EOS R10 – Compacte en krachtige systeemcamera met snelle autofocus, 24,2 MP sensor en 4K-video. Ideaal voor zowel fotografie als contentcreatie.</b></p>
                     <span class="price">€1.080</span>
+                    <div class="product-hover-info">
+                        <img src="Img/Canon EOS R10.jpg" alt="Canon EOS R10">
+                        <p>Compacte systeemcamera met snelle autofocus, 24,2 MP en uitstekende 4K-video voor contentcreatie.</p>
+                    </div>
                 </article>
                 <article class="product-card">
                     <a href="Camera2.Html"><img src="Img/Nikon.png" alt=""></a>
                     <h4>Nikon Z5 II</h4>
                     <p><b>Nikon Z5 II – Krachtige full-frame systeemcamera met een 24,5 MP sensor, snelle autofocus, ingebouwde beeldstabilisatie en 4K-video. Ideaal voor fotografie, reizen en contentcreatie.</b></p>
                     <span class="price">€1.499</span>
+                    <div class="product-hover-info">
+                        <img src="Img/Nikon.png" alt="Nikon Z5 II">
+                        <p>Full-frame camera met sterke autofocus, beeldstabilisatie en 4K-video voor fotografie en reizen.</p>
+                    </div>
                 </article>
                 <article class="product-card">
                     <a href="camera1.html"><img src="Img/Lumix.png" alt=""></a>
                     <h5>Panasonic Lumix S5II</h5>
                     <p><b>Panasonic Lumix S5II – Full-frame systeemcamera met 24,2 MP sensor, sterke autofocus (phase detect), ingebouwde stabilisatie en 6K/4K video. Populair voor zowel foto als video</b></p>
                     <span class="price">€1.800</span>
+                    <div class="product-hover-info">
+                        <img src="Img/Lumix.png" alt="Panasonic Lumix S5II">
+                        <p>Full-frame systeemcamera met 24,2 MP, sterke autofocus en hoogwaardige 6K/4K-video voor filmmakers.</p>
+                    </div>
                 </article>
             </div>
         </section>
@@ -122,40 +140,31 @@
             });
 
             const picture = document.querySelector('.Pictures');
-            if (picture) {
-                const images = ['Img/Canon.png, '];
-                const defaultSrc = picture.getAttribute('src');
-                let intervalId = null;
+            const heroLink = document.querySelector('.hero-image-link');
+            if (picture && heroLink) {
+                const slides = [
+                    { src: 'Img/Canon.png', href: 'Camera4.html' },
+                    { src: 'Img/Lumix.png', href: 'camera1.html' },
+                    { src: 'Img/Nikon.png', href: 'Camera2.Html' },
+                    { src: 'Img/Canon EOS R10.jpg', href: 'Camera3.html' }
+                ];
                 let index = 0;
 
-                const startCycle = () => {
-                    if (intervalId) return;
-
-                    intervalId = window.setInterval(() => {
-                        index = (index + 1) % images.length;
-                        picture.style.opacity = '0';
-                        window.setTimeout(() => {
-                            picture.src = images[index];
-                            picture.style.opacity = '1';
-                        }, 180);
-                    }, 600);
-                };
-
-                const stopCycle = () => {
-                    if (intervalId) {
-                        window.clearInterval(intervalId);
-                        intervalId = null;
-                    }
+                const showSlide = (nextIndex) => {
+                    index = nextIndex;
                     picture.style.opacity = '0';
                     window.setTimeout(() => {
-                        picture.src = defaultSrc;
+                        picture.src = slides[index].src;
+                        heroLink.href = slides[index].href;
                         picture.style.opacity = '1';
                     }, 180);
-                    index = 0;
                 };
 
-                picture.addEventListener('mouseenter', startCycle);
-                picture.addEventListener('mouseleave', stopCycle);
+                setInterval(() => {
+                    showSlide((index + 1) % slides.length);
+                }, 2500);
+
+                showSlide(0);
             }
         });
     </script>
