@@ -37,7 +37,8 @@ body {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-    position: relative; left: 450px;
+    justify-content: flex-end;
+    position: static;
 }
 
 .HeaderTab .Support {
@@ -53,6 +54,7 @@ body {
     animation: movE 0.8s ease-in-out infinite;
     color: #ef4444;
 }
+
 .header-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -60,6 +62,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
+    flex-wrap: wrap;
 }
 
 .brand-info .eyebrow {
@@ -77,11 +80,15 @@ body {
     max-width: 720px;
 }
 
+.logo {
+    margin-left: auto;
+}
+
 .logo img {
     max-height: 140px;
     width: auto;
     display: block;
-    position: relative; right: 1350px;
+    position: static;
 }
 
 main {
@@ -344,12 +351,23 @@ main {
 }
 
 @media (max-width: 900px) {
+    .header-content {
+        align-items: flex-start;
+    }
+
+    .logo {
+        margin-left: 0;
+    }
+
     .hero {
         grid-template-columns: 1fr;
     }
 
     .product-grid {
+        grid-auto-flow: row;
+        grid-auto-columns: unset;
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        overflow-x: visible;
     }
 }
 
@@ -363,6 +381,31 @@ main {
     .header-content {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .HeaderTab {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .HeaderTab .Support {
+        padding: 8px 0;
+        font-size: 18px;
+    }
+
+    .logo img {
+        max-height: 90px;
+    }
+
+    .products-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product-nav {
+        display: none;
     }
 
     .product-grid {
