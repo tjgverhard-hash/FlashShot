@@ -1,11 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+    <style>
+        @keyframes Moving {
+            0%{transform: translateX(10000px);
+            opacity: 0;
+        }
+            100%{transform: translateX(0px);
+            opacity: 1;
+        }
+        }
+    </style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact</title>
+    <link rel="stylesheet" href="layout.css">
 </head>
-<body>
-    
+<body class="ContactUs">
+    <div class="contact-page">
+        <div class="contact-header">
+            <div class="logo">
+                <a href="index.html"><img src="Img/Camera.png" alt="FlashShot logo"></a>
+            </div>
+            <div class="title">Contact us</div>
+        </div>
+
+        <div class="contact-nav">
+            <div class="nav-item"><a href="index.html">Home</a></div>
+            <div class="nav-item"><a href="AboutUs.html">About us</a></div>
+            <div class="nav-item"><a href="index.html">Next page</a></div>
+        </div>
+
+        <div class="contact-content">
+            <div class="contact-card">
+                <div class="card-title"><b>Get in touch</b></div>
+                <div class="contact-person-block">
+                    <div class="person-name">Omar Smit</div>
+                    <div class="person-info">OmarSmit@gmail.com</div>
+                    <div class="person-info">+31 0657916327</div>
+                </div>
+                <div class="contact-person-block">
+                    <div class="person-name">Musie Mekonen</div>
+                    <div class="person-info">MusieMekonen@gmail.com</div>
+                    <div class="person-info">+31 0683710964</div>
+                </div>
+                <div class="contact-person-block">
+                    <div class="person-name">Ruben Van Oosten</div>
+                    <div class="person-info">RubenVanOosten@gmail.com</div>
+                    <div class="person-info">+31 0682017605</div>
+                </div>
+                <div class="contact-person-block">
+                    <div class="person-name">Twan Verhard</div>
+                    <div class="person-info">TwanVerhard@gmail.com</div>
+                    <div class="person-info">+31 0657047195</div>
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="card-title"><b>Contact details</b></div>
+                <div class="contact-form">
+                    <label class="person-label" for="contact-email">Your email</label>
+                    <input id="contact-email" type="email" placeholder="Type your email">
+
+                    <label class="person-label" for="recipient">Send to</label>
+                    <select id="recipient">
+                        <option value="Omar">Omar</option>
+                        <option value="Ruben">Ruben</option>
+                        <option value="Musie">Musie</option>
+                        <option value="Twan">Twan</option>
+                    </select>
+
+                    <label class="person-label" for="message">Your question or problem</label>
+                    <textarea id="message" rows="6" placeholder="Type your message here..."></textarea>
+
+                    <button class="Sending" type="button">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

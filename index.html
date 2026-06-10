@@ -30,7 +30,7 @@
         <div class="header-content">
             <div class="brand-info">
                 <p class="eyebrow">FlashShot</p>
-                <h1>Premium camera's voor iedere fotograaf</h1>
+                <h1>Premium cameras for every photographer</h1>
             </div>
             <div class="HeaderTab">
                 <a class="Support" href="AboutUs.html"><b>About Us</b></a>
@@ -46,10 +46,9 @@
     <main>
         <section class="hero">
             <div class="hero-text">
-                <p class="subtitle">Ontdek scherpe aanbiedingen op spiegelreflex, systeem- en compactcamera's.</p>
-                <h2>Vind je volgende camera bij FlashShot</h2>
-                <p>Snelle levering, deskundig advies en camera's die klaar zijn voor elke fotoshoot.</p>
-                <a class="button" href="#products">Bekijk camera's</a>
+                <p class="subtitle">Discover exceptional offers on DSLR, mirrorless, and compact cameras.</p>
+                <h2>Find your next camera at FlashShot</h2>
+                <p>Fast delivery, expert advice, and cameras prepared for every photoshoot.</p>
             </div>
             <div class="hero-image">
                 <a class="hero-image-link" href="Camera4.html">
@@ -60,36 +59,36 @@
 
         <section id="products" class="products">
             <div class="products-header">
-                <h3>Onze bestsellers</h3>
+                <h3>Our bestsellers</h3>
                 <div class="product-nav">
-                    <button class="scroll-btn scroll-left" type="button" aria-label="Scroll links">&#8592;</button>
-                    <button class="scroll-btn scroll-right" type="button" aria-label="Scroll rechts">&#8594;</button>
+                    <button class="scroll-btn scroll-left" type="button" aria-label="Scroll left">&#8592;</button>
+                    <button class="scroll-btn scroll-right" type="button" aria-label="Scroll right">&#8594;</button>
                 </div>
             </div>
             <div class="product-grid">
                 <article class="product-card">
                    <a href="Camera4.html"><img src="Img/Canon EOS R6.png" alt=""></a>
                     <h4>Canon EOS R6</h4>
-                    <p><b>Canon EOS R6 – Full-frame systeemcamera met 20 MP sensor, zeer snelle autofocus, in-body stabilisatie en sterke prestaties bij weinig licht. Geschikt voor sport, events en video.</b></p>
-                    <span class="price">€2.200</span>
+                    <p><b>Canon EOS R6 – Full-frame mirrorless camera with a 20 MP sensor, exceptionally fast autofocus, in-body stabilization, and excellent low-light performance. Suitable for sports, events, and video.</b></p>
+                    <span class="price">€2,200</span>
                 </article>
                 <article class="product-card">
                     <a href="Camera3.html"><img src="Img/Canon EOS R10.jpg" alt=""></a>
                     <h4>Canon EOS R10</h4>
-                    <p><b>Canon EOS R10 – Compacte en krachtige systeemcamera met snelle autofocus, 24,2 MP sensor en 4K-video. Ideaal voor zowel fotografie als contentcreatie.</b></p>
-                    <span class="price">€1.080</span>
+                    <p><b>Canon EOS R10 – Compact yet powerful mirrorless camera with rapid autofocus, a 24.2 MP sensor, and 4K video. Ideal for both photography and content creation.</b></p>
+                    <span class="price">€1,080</span>
                 </article>
                 <article class="product-card">
                     <a href="Camera2.Html"><img src="Img/Nikon.png" alt=""></a>
                     <h4>Nikon Z5 II</h4>
-                    <p><b>Nikon Z5 II – Krachtige full-frame systeemcamera met een 24,5 MP sensor, snelle autofocus, ingebouwde beeldstabilisatie en 4K-video. Ideaal voor fotografie, reizen en contentcreatie.</b></p>
-                    <span class="price">€1.499</span>
+                    <p><b>Nikon Z5 II – Powerful full-frame mirrorless camera with a 24.5 MP sensor, fast autofocus, built-in image stabilization, and 4K video. Ideal for photography, travel, and content creation.</b></p>
+                    <span class="price">€1,499</span>
                 </article>
                 <article class="product-card">
                     <a href="camera1.html"><img src="Img/Lumix.png" alt=""></a>
                     <h5>Panasonic Lumix S5II</h5>
-                    <p><b>Panasonic Lumix S5II – Full-frame systeemcamera met 24,2 MP sensor, sterke autofocus (phase detect), ingebouwde stabilisatie en 6K/4K video. Populair voor zowel foto als video</b></p>
-                    <span class="price">€1.800</span>
+                    <p><b>Panasonic Lumix S5II – Full-frame mirrorless camera with a 24.2 MP sensor, strong phase-detect autofocus, built-in stabilization, and 6K/4K video. Popular for both photography and video.</b></p>
+                    <span class="price">€1,800</span>
                 </article>
             </div>
         </section>
@@ -120,6 +119,42 @@
 
                     const direction = button.classList.contains('scroll-right') ? 1 : -1;
                     grid.scrollBy({ left: direction * 320, behavior: 'smooth' });
+                });
+            });
+
+            document.querySelectorAll('.draggable').forEach((element) => {
+                let isDragging = false;
+                let offsetX = 0;
+                let offsetY = 0;
+
+                element.addEventListener('pointerdown', (event) => {
+                    isDragging = true;
+                    element.classList.add('dragging');
+                    const rect = element.getBoundingClientRect();
+                    offsetX = event.clientX - rect.left;
+                    offsetY = event.clientY - rect.top;
+                    element.setPointerCapture(event.pointerId);
+                });
+
+                window.addEventListener('pointermove', (event) => {
+                    if (!isDragging) return;
+
+                    const parent = element.parentElement;
+                    const parentRect = parent.getBoundingClientRect();
+                    let left = event.clientX - parentRect.left - offsetX;
+                    let top = event.clientY - parentRect.top - offsetY;
+
+                    left = Math.max(0, Math.min(left, parentRect.width - element.offsetWidth));
+                    top = Math.max(0, Math.min(top, parentRect.height - element.offsetHeight));
+
+                    element.style.left = `${left}px`;
+                    element.style.top = `${top}px`;
+                });
+
+                window.addEventListener('pointerup', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    element.classList.remove('dragging');
                 });
             });
 
