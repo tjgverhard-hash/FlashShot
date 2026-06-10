@@ -442,18 +442,13 @@ body.EOSR6 {
 
 .action-row {
     display: flex;
-    gap: 12px;
+    gap: 24px;
     flex-wrap: wrap;
     margin-top: 6px;
 }
 
-.camera-nav {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid #e2e8f0;
+.product-hero {
+    position: relative;
 }
 
 .price-block {
@@ -467,7 +462,6 @@ body.EOSR6 {
     border: 1px solid #fed7aa;
     width: fit-content;
 }
-
 .price-label {
     font-size: 0.8rem;
     font-weight: 700;
