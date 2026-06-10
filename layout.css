@@ -447,6 +447,15 @@ body.EOSR6 {
     margin-top: 6px;
 }
 
+.camera-nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+}
+
 .price-block {
     display: inline-flex;
     flex-direction: column;
