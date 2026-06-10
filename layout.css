@@ -204,10 +204,11 @@ main {
     transform: scale(1.03);
 }
 
-.product-grid {
+.products .product-grid {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: minmax(280px, 360px);
+    align-items: stretch;
     gap: 24px;
     overflow-x: auto;
     overflow-y: hidden;
@@ -220,17 +221,22 @@ main {
     max-width: 100%;
 }
 
-.product-grid {
+.products .product-grid {
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
-.product-grid::-webkit-scrollbar {
+.products .product-grid::-webkit-scrollbar {
     display: none;
 }
 
 .product-card {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 420px;
+    flex-shrink: 0;
     background: #ffffff;
     border: 1px solid #e5e7eb;
     border-radius: 24px;
@@ -284,10 +290,21 @@ main {
 
 .product-card img {
     width: 100%;
-    max-height: 240px;
+    height: 220px;
     object-fit: contain;
     margin-bottom: 20px;
     display: block;
+    flex-shrink: 0;
+}
+
+.product-card h4,
+.product-card h5 {
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    flex-grow: 1;
+    margin-bottom: 14px;
 }
 
 .product-card .product-hover-info {
@@ -496,7 +513,7 @@ body.EOSR6 {
     animation: imageFloat 3s ease-in-out infinite;
 }
 
-.product-grid {
+.product-shell .product-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
