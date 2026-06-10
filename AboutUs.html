@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        @keyframes Movee {
+            0% {
+                transform: translateX(1000px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+
+        .Home {
+            animation: Movee 0.5s ease-in-out;
+        }
+        .Contact {
+            animation: Movee 0.8s ease-in-out;
+        }
+        .Page {
+            animation: Movee 1s ease-in-out;
+        }
+
+        .Column1, .Column2, .Column3 {
+            animation: Movee 0.6s ease-in-out;
+        }
+
+        .Column1 {
+            animation-delay: 0.1s;
+        }
+        .Column2 {
+            animation-delay: 0.25s;
+        }
+        .Column3 {
+            animation-delay: 0.4s;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="layout.css">
+</head>
+<body class="AboutUs">
+    <div class="Flash">
+        <a href="index.html"><img src="Img/Camera.png" alt="Ventus camera illustration"></a>
+        <p><b>Premium cameras for every photographer</b></p>
+    </div>
+
+    <div class="Navbar">
+        <ul class="Nav">
+            <li><a class="Home" href="index.html"><b>Home</b></a></li>
+            <li><a class="Contact" href="Contact.html"><b>Contact us</b></a></li>
+            <li><a class="Page" href="index.html"><b>Next Page</b></a></li>
+        </ul>
+    </div>
+
+    <div class="AboutHero">
+        <div class="AboutText">
+            <h1 class="hero-title"><b>About FlashShot</b></h1>
+            <p class="hero-text"><b>At FlashShot, we are more than just a camera store — we are a team of photography enthusiasts dedicated to helping you see the world differently. Whether you're capturing your first photo or producing professional work, we provide the tools you need to bring your vision to life. We carefully select every product in our collection to ensure top performance, reliability, and value. From compact cameras to advanced gear, FlashShot is here to support your creative journey every step of the way. Our mission is simple: to make high-quality photography accessible to everyone and inspire people to capture the beauty in everyday moments.</b></p>
+        </div>
+    </div>
+
+    <div class="Main">
+        <button class="small-card active" type="button" data-title="Who We Are" data-text="FlashShot was created out of a passion for photography and technology. We believe that every moment tells a story, and the right camera helps capture that story perfectly. That’s why we offer a carefully selected range of cameras and accessories for both beginners and professional photographers. At FlashShot, everything is about quality, innovation, and reliability. Our goal is to give everyone the ability to capture memories with sharp images and stunning detail.">
+            <div class="cycle-header">
+                <h3>Who We Are</h3>
+                <div class="cycle-bar"><span class="cycle-bar-fill"></span></div>
+            </div>
+        </button>
+        <button class="small-card next" type="button" data-title="What does FlashShot do?" data-text="FlashShot specializes in providing high-quality cameras and photography gear for every type of creator. We help people capture life’s moments with clarity, precision, and style — whether it’s for personal memories, creative projects, or professional work. We don’t just sell cameras. We help you choose the right equipment, from beginner-friendly models to advanced professional setups, along with essential accessories that improve your shooting experience. At FlashShot, we focus on making photography simple, accessible, and powerful for everyone who wants to tell their story through images.">
+            <div class="cycle-header">
+                <h3>What does FlashShot do?</h3>
+                <div class="cycle-bar"><span class="cycle-bar-fill"></span></div>
+            </div>
+        </button>
+        <button class="small-card waiting" type="button" data-title="Why choose FlashShot?" data-text="FlashShot means choosing quality, reliability, and passion for photography. We understand that the right camera makes all the difference, which is why we carefully select products that meet the highest standards. Whether you're just starting out or already a professional photographer, we make it easy to find the perfect gear for your needs. Our focus is not only on great products, but also on helping you make the right choice with confidence. With FlashShot, you get more than just equipment — you get a trusted partner in your creative journey.">
+            <div class="cycle-header">
+                <h3>Why choose FlashShot?</h3>
+                <div class="cycle-bar"><span class="cycle-bar-fill"></span></div>
+            </div>
+        </button>
+        
+    </div>
+
+    <script>
+        const smallCards = Array.from(document.querySelectorAll('.small-card'));
+        const heroTitle = document.querySelector('.hero-title');
+        const heroText = document.querySelector('.hero-text');
+        let activeCardIndex = 0;
+
+        function updateHero(index) {
+            activeCardIndex = index;
+            smallCards.forEach((card, cardIndex) => {
+                const fill = card.querySelector('.cycle-bar-fill');
+                const isActive = cardIndex === index;
+                const isNext = cardIndex === (index + 1) % smallCards.length;
+                card.classList.toggle('active', isActive);
+                card.classList.toggle('next', isNext);
+                card.classList.toggle('waiting', !isActive && !isNext);
+                card.classList.toggle('hidden', !(isActive || isNext));
+                if (fill) {
+                    fill.style.width = '0%';
+                    if (isActive) {
+                        requestAnimationFrame(() => {
+                            requestAnimationFrame(() => {
+                                fill.style.width = '100%';
+                            });
+                        });
+                    }
+                }
+            });
+
+            const activeCard = smallCards[index];
+            heroTitle.textContent = activeCard.dataset.title;
+            heroText.textContent = activeCard.dataset.text;
+        }
+
+        smallCards.forEach((card, index) => {
+            card.addEventListener('click', () => updateHero(index));
+        });
+
+        updateHero(0);
+        setInterval(() => {
+            const nextIndex = (activeCardIndex + 1) % smallCards.length;
+            updateHero(nextIndex);
+        }, 30000);
+    </script>
+    <footer style="color: rgb(121, 121, 121);"><b>2026 FlashShot. All rights reserved.</b></footer>
+</body>
+</html>
