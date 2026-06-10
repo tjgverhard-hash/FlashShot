@@ -845,11 +845,10 @@ Start of Contact.Html*/
 
 .contact-person-block {
     background-color: #ffffff;
-    border: 1px solid #e5e7eb;
     border-radius: 14px;
     padding: 14px;
     margin-bottom: 12px;
-    border: solid rgb(129, 129, 129);
+    border: 1px solid rgb(129, 129, 129);
 }
 
 .person-name {
