@@ -29,13 +29,13 @@
     <header class="site-header">
         <div class="header-content">
             <div class="brand-info">
-                <p class="eyebrow">FlashShot</p>
-                <h1>Premium cameras for every photographer</h1>
+                <p style="color: white;" class="eyebrow">FlashShot</p>
+                <h1 style="color: white;">Premium cameras for every photographer</h1>
             </div>
             <div class="HeaderTab">
-                <a class="Support" href="AboutUs.html"><b>About Us</b></a>
-                <a class="Support" href="Contact.html"><b>Contact</b></a>
-                <a class="Support" href="Camera3.html"><b></b></a>
+                <a style="color: white;" class="Support" href="AboutUs.html"><b>About Us</b></a>
+                <a style="color: white;" class="Support" href="Contact.html"><b>Contact</b></a>
+                <a style="color: white;" class="Support" href="Crew.html"><b>The Crew</b></a>
                 </div>
             <div class="logo">
                 <img src="Img/Camera.png" alt="FlashShot logo">
@@ -46,9 +46,9 @@
     <main>
         <section class="hero">
             <div class="hero-text">
-                <p class="subtitle">Discover exceptional offers on DSLR, mirrorless, and compact cameras.</p>
-                <h2>Find your next camera at FlashShot</h2>
-                <p>Fast delivery, expert advice, and cameras prepared for every photoshoot.</p>
+                <p style="color: white;" class="subtitle">Discover exceptional offers on DSLR, mirrorless, and compact cameras.</p>
+                <h2 style="color: white;">Find your next camera at FlashShot</h2>
+                <p style="color: white;">Fast delivery, expert advice, and cameras prepared for every photoshoot.</p>
             </div>
             <div class="hero-image">
                 <a class="hero-image-link" href="Camera4.html">
@@ -59,7 +59,7 @@
 
         <section id="products" class="products">
             <div class="products-header">
-                <h3>Our bestsellers</h3>
+                <h3 style="color: white;">Our bestsellers</h3>
                 <div class="product-nav">
                     <button class="scroll-btn scroll-left" type="button" aria-label="Scroll left">&#8592;</button>
                     <button class="scroll-btn scroll-right" type="button" aria-label="Scroll right">&#8594;</button>
@@ -86,7 +86,7 @@
                 </article>
                 <article class="product-card">
                     <a href="camera1.html"><img src="Img/Lumix.png" alt=""></a>
-                    <h5>Panasonic Lumix S5II</h5>
+                    <h4>Panasonic Lumix S5II</h4>
                     <p><b>Panasonic Lumix S5II – Full-frame mirrorless camera with a 24.2 MP sensor, strong phase-detect autofocus, built-in stabilization, and 6K/4K video. Popular for both photography and video.</b></p>
                     <span class="price">€1,800</span>
                 </article>
@@ -116,15 +116,56 @@
                 }, { passive: false });
             });
 
-            document.querySelectorAll('.scroll-btn').forEach((button) => {
-                button.addEventListener('click', () => {
-                    const section = button.closest('.products');
-                    const grid = section ? section.querySelector('.product-grid') : null;
+            document.querySelectorAll('.products').forEach((section) => {
+                const grid = section.querySelector('.product-grid');
+                if (!grid) return;
 
-                    if (!grid) return;
+                const realCards = Array.from(grid.querySelectorAll('.product-card'));
+                if (realCards.length < 2) return;
 
-                    const direction = button.classList.contains('scroll-right') ? 1 : -1;
-                    grid.scrollBy({ left: direction * 320, behavior: 'smooth' });
+                const firstClone = realCards[0].cloneNode(true);
+                const lastClone = realCards[realCards.length - 1].cloneNode(true);
+
+                grid.appendChild(firstClone);
+                grid.insertBefore(lastClone, realCards[0]);
+
+                const gap = parseFloat(getComputedStyle(grid).columnGap || 24);
+                const getStep = () => {
+                    const firstCard = grid.querySelector('.product-card');
+                    if (!firstCard) return 320;
+                    return Math.round(firstCard.getBoundingClientRect().width + gap);
+                };
+
+                let currentIndex = 0;
+                let isAnimating = false;
+
+                const goToSlide = (nextIndex) => {
+                    if (isAnimating) return;
+
+                    isAnimating = true;
+                    grid.classList.add('is-transitioning');
+                    currentIndex = nextIndex;
+
+                    const targetLeft = getStep() * (currentIndex + 1);
+                    grid.scrollTo({ left: targetLeft, behavior: 'smooth' });
+
+                    window.setTimeout(() => {
+                        isAnimating = false;
+                        grid.classList.remove('is-transitioning');
+                    }, 420);
+                };
+
+                section.querySelectorAll('.scroll-btn').forEach((button) => {
+                    button.addEventListener('click', () => {
+                        const isRight = button.classList.contains('scroll-right');
+                        const direction = isRight ? 1 : -1;
+                        const nextIndex = (currentIndex + direction + realCards.length) % realCards.length;
+                        goToSlide(nextIndex);
+                    });
+                });
+
+                window.requestAnimationFrame(() => {
+                    grid.scrollTo({ left: getStep(), behavior: 'auto' });
                 });
             });
 
@@ -171,7 +212,8 @@
                     { src: 'Img/Canon.png', href: 'Camera4.html' },
                     { src: 'Img/Lumix.png', href: 'camera1.html' },
                     { src: 'Img/Nikon.png', href: 'Camera2.Html' },
-                    { src: 'Img/Canon EOS R10.jpg', href: 'Camera3.html' }
+                    { src: 'Img/Canon EOS R10.jpg', href: 'Camera3.html' },
+                    { src: 'Img/Nikonn.png', href: 'Camera5.Html'}
                 ];
                 let index = 0;
 
@@ -193,6 +235,6 @@
             }
         });
     </script>
-    <footer><b>2026 FlashShot. All rights reserved.</b></footer>
+    <footer style="color: white;"><b>2026 FlashShot. All rights reserved.</b></footer>
 </body>
 </html>

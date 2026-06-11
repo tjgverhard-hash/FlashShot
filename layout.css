@@ -6,8 +6,9 @@
 /*Start of Index.HTML*/
 body {
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background-color: #f7f9fc;
-    color: #1f2937;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #000000 100%);
+    color: #000000;
+    min-height: 100vh;
 }
 
 @keyframes imageFloat {
@@ -29,9 +30,8 @@ body {
 }
 
 .site-header {
-    background-color: #ffffff;
     padding: 24px 32px;
-    border-bottom: 1px solid #e5e7eb;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #000000 100%);
 }
 .HeaderTab {
     display: flex;
@@ -48,6 +48,7 @@ body {
     font-size: 20px;
     color: #4b5563;
     transition: color 0.2s ease;
+    
 }
 
 .HeaderTab .Support:hover {
@@ -82,13 +83,15 @@ body {
 
 .logo {
     margin-left: auto;
+    position: relative; right: 70vw; bottom: 15vh;
 }
 
 .logo img {
-    max-height: 140px;
+    max-height: 180px;
     width: auto;
     display: block;
     position: static;
+    position: relative; bottom: 30px;
 }
 
 main {
@@ -120,7 +123,7 @@ main {
 .hero-text p {
     font-size: 1.05rem;
     max-width: 620px;
-    color: #4b5563;
+    color: #ffffff;
     margin-bottom: 28px;
 }
 
@@ -139,7 +142,7 @@ main {
     overflow: hidden;
     border-radius: 24px;
     box-shadow: 0 24px 58px rgba(15, 23, 42, 0.12);
-    background-color: #f3f4f6;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #000000 100%);
     aspect-ratio: 4 / 3;
     width: 100%;
     max-width: 520px;
@@ -221,9 +224,19 @@ main {
     max-width: 100%;
 }
 
+.products .product-grid.is-transitioning {
+    filter: brightness(1.03);
+}
+
 .products .product-grid {
     scrollbar-width: none;
     -ms-overflow-style: none;
+}
+.products .product-grid p, h4 {
+    color: white;
+}
+.products .product-grid span {
+    color: white;
 }
 
 .products .product-grid::-webkit-scrollbar {
@@ -237,8 +250,7 @@ main {
     justify-content: space-between;
     min-height: 420px;
     flex-shrink: 0;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #000000 100%);
     border-radius: 24px;
     padding: 24px;
     text-align: center;
@@ -374,10 +386,11 @@ main {
 /*End of Index.HTML
 Start of AboutUs.HTML*/
 
-body.EOSR6 {
+body.EOSR6,
+body.Prod {
     min-height: 100vh;
-    background: radial-gradient(circle at top left, #f8fafc 0%, #e2e8f0 35%, #f8fafc 100%);
-    color: #0f172a;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #111827 100%);
+    color: #e2e8f0;
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
@@ -604,7 +617,7 @@ body.EOSR6 {
     }
 }
 .AboutUs {
-    background: linear-gradient(135deg, #0f172a, #334155);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #111827 100%);
     min-height: 100vh;
     padding: 32px 24px 48px;
     display: flex;
@@ -632,7 +645,7 @@ body.EOSR6 {
     height: 56px;
     object-fit: contain;
     border: 2px solid #ffffff;
-    background-color: #ffffff;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #000000 100%);
     border-radius: 16px;
 }
 
@@ -685,20 +698,20 @@ body.EOSR6 {
     max-width: 1100px;
     padding: 32px;
     border-radius: 24px;
-    background: rgba(255, 255, 255, 0.96);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #000000 100%);
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
 }
 
 .AboutText h1 {
     font-size: clamp(2rem, 3vw, 2.8rem);
     margin-bottom: 10px;
-    color: #111827;
+    color: #ffffff;
 }
 
 .AboutText p {
     font-size: 1.05rem;
     line-height: 1.7;
-    color: #4b5563;
+    color: #ffffff;
     max-width: 760px;
 }
 
@@ -717,8 +730,8 @@ body.EOSR6 {
     border-radius: 18px;
     text-align: left;
     cursor: pointer;
-    background: linear-gradient(135deg, #ffffff, #e5e7eb);
-    color: #111827;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #000000 100%);
+    color: #ffffff;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, opacity 0.2s ease;
 }
@@ -726,7 +739,6 @@ body.EOSR6 {
 .small-card.active {
     transform: translateY(-3px);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
-    background: linear-gradient(135deg, #fef2f2, #fef3c7);
 }
 
 .small-card.next {
@@ -741,7 +753,7 @@ body.EOSR6 {
 .Column2 h3,
 .Column3 h3 {
     margin-bottom: 8px;
-    color: #0f172a;
+    color: #ffffff;
 }
 
 .AboutUs .Main button:hover {
@@ -764,7 +776,7 @@ body.EOSR6 {
 /*End of About Us
 Start of Contact.Html*/
 .ContactUs {
-    background-color: #1f2937;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #111827 100%);
     margin: 0;
     min-height: 100vh;
     padding: 24px;
@@ -776,7 +788,7 @@ Start of Contact.Html*/
 .contact-page {
     width: 100%;
     max-width: 1100px;
-    background-color: #ffffff;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #000000 100%);
     border-radius: 28px;
     padding: 36px;
     box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22);
@@ -797,9 +809,16 @@ Start of Contact.Html*/
 .contact-header .title {
     font-size: 2.4rem;
     font-weight: bold;
-    color: #111827;
+    color: #ffffff;
 }
-
+.title img {
+    height: 100px;
+    width: auto;
+    position: relative; top: 4vh; right: 19vw;
+}
+.title img:hover {
+    animation: hov 1s ease-in-out infinite;
+}
 .contact-nav {
     display: flex;
     gap: 16px;
@@ -810,7 +829,7 @@ Start of Contact.Html*/
 
 .nav-item a {
     text-decoration: none;
-    color: #111827;
+    color: #000000;
     background-color: #f3f4f6;
     padding: 12px 20px;
     border-radius: 999px;
@@ -827,7 +846,7 @@ Start of Contact.Html*/
 .contact-card {
     flex: 1;
     min-width: 280px;
-    background-color: #f9fafb;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #000000 100%);
     border: 1px solid #e5e7eb;
     border-radius: 20px;
     padding: 28px;
@@ -837,11 +856,11 @@ Start of Contact.Html*/
     font-size: 1.4rem;
     font-weight: bold;
     margin-bottom: 12px;
-    color: #111827;
+    color: #ffffff;
 }
 
 .card-text {
-    color: #4b5563;
+    color: #ffffff;
     margin-bottom: 10px;
     font-size: 1.05rem;
 }
@@ -869,7 +888,7 @@ Start of Contact.Html*/
 .person-label {
     display: block;
     font-weight: 700;
-    color: #111827;
+    color: #ffffff;
     margin-bottom: 6px;
 }
 
@@ -925,4 +944,280 @@ Start of Contact.Html*/
 .contact-form .Sending:hover {
     border: solid black;
 }
-/*End of Contact.HTML*/
+/*End of Contact.HTML
+Start of Crew.HTML*/
+.CrewPage {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #111827 100%);
+    color: #f8fafc;
+}
+
+/* ── Header / Navigation ── */
+.crew-header {
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.crew-header-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.crew-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #f8fafc;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.crew-logo img {
+    height: 36px;
+    width: auto;
+    border-radius: 8px;
+}
+
+.crew-nav {
+    display: flex;
+    gap: 4px;
+}
+
+.crew-nav a {
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #94a3b8;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.crew-nav a:hover {
+    color: #f8fafc;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.crew-nav a.active {
+    color: #f8fafc;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Main Shell ── */
+.crew-shell {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px 24px 64px;
+}
+
+/* ── Hero ── */
+.crew-hero {
+    padding: 32px 36px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(2, 6, 23, 0.3);
+    margin-bottom: 32px;
+}
+
+.crew-hero .eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #fbbf24;
+    margin-bottom: 10px;
+}
+
+.crew-hero h1 {
+    font-size: clamp(1.75rem, 3vw, 2.6rem);
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.crew-hero p {
+    max-width: 700px;
+    color: #cbd5e1;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* ── Crew Grid ── */
+.crew-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* ── Crew Card ── */
+.crew-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 28px 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    box-shadow: 0 8px 24px rgba(2, 6, 23, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.crew-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(2, 6, 23, 0.35);
+}
+
+/* ── Accent border per member ── */
+.crew-card.twan {
+    border-left: 4px solid #ef4444;
+}
+.crew-card.twan:hover {
+    border-color: #ef4444;
+    border-left-width: 4px;
+}
+
+.crew-card.ruben {
+    border-left: 4px solid #3b82f6;
+}
+.crew-card.ruben:hover {
+    border-color: #3b82f6;
+    border-left-width: 4px;
+}
+
+.crew-card.omar {
+    border-left: 4px solid #f59e0b;
+}
+.crew-card.omar:hover {
+    border-color: #f59e0b;
+    border-left-width: 4px;
+}
+
+.crew-card.musie {
+    border-left: 4px solid #14b8a6;
+}
+.crew-card.musie:hover {
+    border-color: #14b8a6;
+    border-left-width: 4px;
+}
+
+/* ── Avatar ── */
+.card-avatar {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.initials {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #f8fafc;
+}
+
+/* ── Card Content ── */
+.card-content {
+    flex: 1;
+}
+
+.crew-card h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.card-role {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+.crew-card p {
+    color: #cbd5e1;
+    line-height: 1.6;
+    font-size: 0.92rem;
+}
+
+/* ── Footer ── */
+.crew-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 20px 24px;
+    text-align: center;
+}
+
+.crew-footer p {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+/* ── Responsive ── */
+@media (max-width: 760px) {
+    .crew-shell {
+        padding: 32px 16px 48px;
+    }
+
+    .crew-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .crew-hero {
+        padding: 24px 20px;
+    }
+
+    .crew-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 24px 20px;
+    }
+
+    .crew-header-inner {
+        height: 56px;
+    }
+
+    .crew-nav a {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}
+/*Start of Camera1, Camera2, Camera3, Camera4, Camera5.HTML*/
+.Prod h3, h1, p {
+    color: black;
+}
+.Prod .product-hero, .info-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #000000 100%);
+}
+.Prod p, h1 {
+    color: white;
+}
+.Prod .product-grid h3 {
+    color: white;
+}
