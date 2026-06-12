@@ -814,7 +814,7 @@ Start of Contact.Html*/
 .title img {
     height: 100px;
     width: auto;
-    position: relative; top: 4vh; right: 25vw;
+    position: relative; top: 4vh; right: 355px;
 }
 .title img:hover {
     animation: hov 1s ease-in-out infinite;
