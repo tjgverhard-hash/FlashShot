@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
     <style>
-           @keyframes move {
+        @keyframes move {
             0% {transform: translateY(20px);}
             50% {transform: translateY(0px);}
             100% {transform: translateY(20px);}
@@ -29,14 +29,14 @@
     <header class="site-header">
         <div class="header-content">
             <div class="brand-info">
-                <p style="color: white;" class="eyebrow">FlashShot</p>
-                <h1 style="color: white;">Premium cameras for every photographer</h1>
+                <p class="eyebrow">FlashShot</p>
+                <h1>Premium cameras for every photographer</h1>
             </div>
             <div class="HeaderTab">
-                <a style="color: white;" class="Support" href="AboutUs.html"><b>About Us</b></a>
-                <a style="color: white;" class="Support" href="Contact.html"><b>Contact</b></a>
-                <a style="color: white;" class="Support" href="Crew.html"><b>The Crew</b></a>
-                </div>
+                <a class="Support" href="AboutUs.html"><b>About Us</b></a>
+                <a class="Support" href="Contact.html"><b>Contact</b></a>
+                <a class="Support" href="Crew.html"><b>The Crew</b></a>
+            </div>
             <div class="logo">
                 <img src="Img/Camera.png" alt="FlashShot logo">
             </div>
@@ -46,9 +46,9 @@
     <main>
         <section class="hero">
             <div class="hero-text">
-                <p style="color: white;" class="subtitle">Discover exceptional offers on DSLR, mirrorless, and compact cameras.</p>
-                <h2 style="color: white;">Find your next camera at FlashShot</h2>
-                <p style="color: white;">Fast delivery, expert advice, and cameras prepared for every photoshoot.</p>
+                <p class="subtitle">Discover exceptional offers on DSLR, mirrorless, and compact cameras.</p>
+                <h2>Find your next camera at FlashShot</h2>
+                <p>Fast delivery, expert advice, and cameras prepared for every photoshoot.</p>
             </div>
             <div class="hero-image">
                 <a class="hero-image-link" href="Camera4.html">
@@ -59,7 +59,7 @@
 
         <section id="products" class="products">
             <div class="products-header">
-                <h3 style="color: white;">Our bestsellers</h3>
+                <h3>Our bestsellers</h3>
                 <div class="product-nav">
                     <button class="scroll-btn scroll-left" type="button" aria-label="Scroll left">&#8592;</button>
                     <button class="scroll-btn scroll-right" type="button" aria-label="Scroll right">&#8594;</button>
@@ -102,109 +102,57 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const grids = document.querySelectorAll('.product-grid');
-
-            grids.forEach((grid) => {
-                grid.addEventListener('wheel', (event) => {
-                    const atStart = grid.scrollLeft <= 0;
-                    const atEnd = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 1;
-
-                    if ((event.deltaY > 0 && !atEnd) || (event.deltaY < 0 && !atStart)) {
-                        event.preventDefault();
-                        grid.scrollLeft += event.deltaY;
-                    }
-                }, { passive: false });
-            });
-
+            // ── Product grid: smooth slide scrolling ──
             document.querySelectorAll('.products').forEach((section) => {
                 const grid = section.querySelector('.product-grid');
                 if (!grid) return;
 
-                const realCards = Array.from(grid.querySelectorAll('.product-card'));
-                if (realCards.length < 2) return;
+                const cards = Array.from(grid.children);
+                if (cards.length < 2) return;
 
-                const firstClone = realCards[0].cloneNode(true);
-                const lastClone = realCards[realCards.length - 1].cloneNode(true);
+                const total = cards.length;
+                let index = 0;
+                let busy = false;
+                let wheelTimer = null;
 
-                grid.appendChild(firstClone);
-                grid.insertBefore(lastClone, realCards[0]);
+                grid.style.scrollBehavior = 'smooth';
 
-                const gap = parseFloat(getComputedStyle(grid).columnGap || 24);
-                const getStep = () => {
-                    const firstCard = grid.querySelector('.product-card');
-                    if (!firstCard) return 320;
-                    return Math.round(firstCard.getBoundingClientRect().width + gap);
+                const step = () => {
+                    const w = cards[0].offsetWidth;
+                    const g = parseFloat(getComputedStyle(grid).columnGap) || 24;
+                    return w + g;
                 };
 
-                let currentIndex = 0;
-                let isAnimating = false;
+                const slide = (next) => {
+                    if (busy) return;
+                    busy = true;
 
-                const goToSlide = (nextIndex) => {
-                    if (isAnimating) return;
+                    if (next < 0) next = total - 1;
+                    if (next >= total) next = 0;
+                    index = next;
 
-                    isAnimating = true;
-                    grid.classList.add('is-transitioning');
-                    currentIndex = nextIndex;
+                    grid.scrollLeft = step() * index;
 
-                    const targetLeft = getStep() * (currentIndex + 1);
-                    grid.scrollTo({ left: targetLeft, behavior: 'smooth' });
-
-                    window.setTimeout(() => {
-                        isAnimating = false;
-                        grid.classList.remove('is-transitioning');
-                    }, 420);
+                    setTimeout(() => { busy = false; }, 0);
                 };
 
-                section.querySelectorAll('.scroll-btn').forEach((button) => {
-                    button.addEventListener('click', () => {
-                        const isRight = button.classList.contains('scroll-right');
-                        const direction = isRight ? 1 : -1;
-                        const nextIndex = (currentIndex + direction + realCards.length) % realCards.length;
-                        goToSlide(nextIndex);
+                section.querySelectorAll('.scroll-btn').forEach((btn) => {
+                    btn.addEventListener('click', () => {
+                        slide(index + (btn.classList.contains('scroll-right') ? 1 : -1));
                     });
                 });
 
-                window.requestAnimationFrame(() => {
-                    grid.scrollTo({ left: getStep(), behavior: 'auto' });
-                });
+                grid.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    if (busy || wheelTimer) return;
+                    wheelTimer = setTimeout(() => { wheelTimer = null; }, 220);
+                    slide(index + (e.deltaY > 0 ? 1 : -1));
+                }, { passive: false });
+
+                grid.scrollLeft = 0;
             });
 
-            document.querySelectorAll('.draggable').forEach((element) => {
-                let isDragging = false;
-                let offsetX = 0;
-                let offsetY = 0;
-
-                element.addEventListener('pointerdown', (event) => {
-                    isDragging = true;
-                    element.classList.add('dragging');
-                    const rect = element.getBoundingClientRect();
-                    offsetX = event.clientX - rect.left;
-                    offsetY = event.clientY - rect.top;
-                    element.setPointerCapture(event.pointerId);
-                });
-
-                window.addEventListener('pointermove', (event) => {
-                    if (!isDragging) return;
-
-                    const parent = element.parentElement;
-                    const parentRect = parent.getBoundingClientRect();
-                    let left = event.clientX - parentRect.left - offsetX;
-                    let top = event.clientY - parentRect.top - offsetY;
-
-                    left = Math.max(0, Math.min(left, parentRect.width - element.offsetWidth));
-                    top = Math.max(0, Math.min(top, parentRect.height - element.offsetHeight));
-
-                    element.style.left = `${left}px`;
-                    element.style.top = `${top}px`;
-                });
-
-                window.addEventListener('pointerup', () => {
-                    if (!isDragging) return;
-                    isDragging = false;
-                    element.classList.remove('dragging');
-                });
-            });
-
+            // ── Hero image slideshow ──
             const picture = document.querySelector('.Pictures');
             const heroLink = document.querySelector('.hero-image-link');
             if (picture && heroLink) {
@@ -235,6 +183,6 @@
             }
         });
     </script>
-    <footer style="color: white;"><b>2026 FlashShot. All rights reserved.</b></footer>
+    <footer><b>2026 FlashShot. All rights reserved.</b></footer>
 </body>
 </html>

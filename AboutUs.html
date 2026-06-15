@@ -39,7 +39,7 @@
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>About Us — FlashShot</title>
     <link rel="stylesheet" href="layout.css">
 </head>
 <body class="AboutUs">
@@ -59,18 +59,18 @@
     <div class="AboutHero">
         <div class="AboutText">
             <h1 class="hero-title"><b>About FlashShot</b></h1>
-            <p style="color: white;" class="hero-text"><b>At FlashShot, we are more than just a camera store — we are a team of photography enthusiasts dedicated to helping you see the world differently. Whether you're capturing your first photo or producing professional work, we provide the tools you need to bring your vision to life. We carefully select every product in our collection to ensure top performance, reliability, and value. From compact cameras to advanced gear, FlashShot is here to support your creative journey every step of the way. Our mission is simple: to make high-quality photography accessible to everyone and inspire people to capture the beauty in everyday moments.</b></p>
+            <p class="hero-text"><b>At FlashShot, we are more than just a camera store — we are a team of photography enthusiasts dedicated to helping you see the world differently. Whether you're capturing your first photo or producing professional work, we provide the tools you need to bring your vision to life. We carefully select every product in our collection to ensure top performance, reliability, and value. From compact cameras to advanced gear, FlashShot is here to support your creative journey every step of the way. Our mission is simple: to make high-quality photography accessible to everyone and inspire people to capture the beauty in everyday moments.</b></p>
         </div>
     </div>
 
     <div class="Main">
-        <button class="small-card active" type="button" data-title="Who We Are" data-text="FlashShot was created out of a passion for photography and technology. We believe that every moment tells a story, and the right camera helps capture that story perfectly. That’s why we offer a carefully selected range of cameras and accessories for both beginners and professional photographers. At FlashShot, everything is about quality, innovation, and reliability. Our goal is to give everyone the ability to capture memories with sharp images and stunning detail.">
+        <button class="small-card active" type="button" data-title="Who We Are" data-text="FlashShot was created out of a passion for photography and technology. We believe that every moment tells a story, and the right camera helps capture that story perfectly. That's why we offer a carefully selected range of cameras and accessories for both beginners and professional photographers. At FlashShot, everything is about quality, innovation, and reliability. Our goal is to give everyone the ability to capture memories with sharp images and stunning detail.">
             <div class="cycle-header">
                 <h3>Who We Are</h3>
                 <div class="cycle-bar"><span class="cycle-bar-fill"></span></div>
             </div>
         </button>
-        <button class="small-card next" type="button" data-title="What does FlashShot do?" data-text="FlashShot specializes in providing high-quality cameras and photography gear for every type of creator. We help people capture life’s moments with clarity, precision, and style — whether it’s for personal memories, creative projects, or professional work. We don’t just sell cameras. We help you choose the right equipment, from beginner-friendly models to advanced professional setups, along with essential accessories that improve your shooting experience. At FlashShot, we focus on making photography simple, accessible, and powerful for everyone who wants to tell their story through images.">
+        <button class="small-card next" type="button" data-title="What does FlashShot do?" data-text="FlashShot specializes in providing high-quality cameras and photography gear for every type of creator. We help people capture life's moments with clarity, precision, and style — whether it's for personal memories, creative projects, or professional work. We don't just sell cameras. We help you choose the right equipment, from beginner-friendly models to advanced professional setups, along with essential accessories that improve your shooting experience. At FlashShot, we focus on making photography simple, accessible, and powerful for everyone who wants to tell their story through images.">
             <div class="cycle-header">
                 <h3>What does FlashShot do?</h3>
                 <div class="cycle-bar"><span class="cycle-bar-fill"></span></div>
@@ -82,7 +82,6 @@
                 <div class="cycle-bar"><span class="cycle-bar-fill"></span></div>
             </div>
         </button>
-        
     </div>
 
     <script>
@@ -100,7 +99,7 @@
                 card.classList.toggle('next', isNext);
                 card.classList.toggle('waiting', !isActive && !isNext);
                 card.classList.toggle('hidden', !(isActive || isNext))
-                            });
+            });
 
             const activeCard = smallCards[index];
             heroTitle.textContent = activeCard.dataset.title;
@@ -113,6 +112,6 @@
 
         updateHero(0);
     </script>
-    <footer style="color: rgb(255, 255, 255);"><b>2026 FlashShot. All rights reserved.</b></footer>
+    <footer><b>2026 FlashShot. All rights reserved.</b></footer>
 </body>
 </html>
