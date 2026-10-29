@@ -116,12 +116,12 @@ main {
     padding: 0 24px;
 }
 
+main.container-fluid {
+    padding: 0 24px;
+}
+
 /* ── Hero Section ── */
 .hero {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 40px;
-    align-items: center;
     margin-bottom: 64px;
     background: #FFFFFF;
     border-radius: 24px;
@@ -367,8 +367,11 @@ main {
         margin-left: 0;
     }
     .hero {
-        grid-template-columns: 1fr;
         padding: 32px 24px;
+    }
+    .hero .row > [class*="col-"] {
+        flex: 0 0 100%;
+        width: 100%;
     }
     .hero-image {
         max-width: 100%;
@@ -378,6 +381,10 @@ main {
 @media (max-width: 640px) {
     .site-header,
     main {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+    main.container-fluid {
         padding-left: 18px;
         padding-right: 18px;
     }

@@ -28,71 +28,75 @@
 </head>
 <body>
     <header class="site-header">
-        <div class="header-content">
+        <div class="header-content container-fluid px-0">
             <div class="brand-info">
                 <p class="eyebrow">FlashShot</p>
                 <h1>Premium cameras for every photographer</h1>
             </div>
-            <div class="HeaderTab">
-                <a class="Support" href="AboutUs.html"><b>About Us</b></a>
-                <a class="Support" href="Contact.html"><b>Contact</b></a>
-                <a class="Support" href="Crew.html"><b>The Crew</b></a>
-            </div>
+            <nav class="HeaderTab nav" aria-label="Main navigation">
+                <a class="Support nav-link" href="AboutUs.html"><b>About Us</b></a>
+                <a class="Support nav-link" href="Contact.html"><b>Contact</b></a>
+                <a class="Support nav-link" href="Crew.html"><b>The Crew</b></a>
+            </nav>
             <div class="logo">
-                <img src="Img/Camera.png" alt="FlashShot logo">
+                <img class="img-fluid" src="Img/Camera.png" alt="FlashShot logo">
             </div>
         </div>
     </header>
 
-    <main>
+    <main class="container-fluid">
         <section class="hero">
-            <div class="hero-text">
-                <p class="subtitle">Discover exceptional offers on DSLR, mirrorless, and compact cameras.</p>
-                <h2>Find your next camera at FlashShot</h2>
-                <p>Fast delivery, expert advice, and cameras prepared for every photoshoot.</p>
-            </div>
-            <div class="hero-image">
-                <a class="hero-image-link" href="Camera4.html">
-                    <img class="Pictures" src="Img/Camera.png" alt="FlashShot camera">
-                </a>
+            <div class="row gx-5 gy-5 align-items-center">
+                <div class="col-7 hero-text">
+                    <p class="subtitle">Discover exceptional offers on DSLR, mirrorless, and compact cameras.</p>
+                    <h2>Find your next camera at FlashShot</h2>
+                    <p>Fast delivery, expert advice, and cameras prepared for every photoshoot.</p>
+                </div>
+                <div class="col-5">
+                    <div class="hero-image">
+                        <a class="hero-image-link" href="Camera4.html">
+                            <img class="Pictures img-fluid" src="Img/Camera.png" alt="FlashShot camera">
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="products" class="products">
-            <div class="products-header">
+            <div class="products-header d-flex align-items-center justify-content-between">
                 <h3>Our bestsellers</h3>
                 <div class="product-nav">
-                    <button class="scroll-btn scroll-left" type="button" aria-label="Scroll left">&#8592;</button>
-                    <button class="scroll-btn scroll-right" type="button" aria-label="Scroll right">&#8594;</button>
+                    <button class="scroll-btn btn scroll-left" type="button" aria-label="Scroll left">&#8592;</button>
+                    <button class="scroll-btn btn scroll-right" type="button" aria-label="Scroll right">&#8594;</button>
                 </div>
             </div>
             <div class="product-grid">
-                <article class="product-card">
-                   <a href="Camera4.html"><img src="Img/Canon EOS R6.png" alt=""></a>
+                <article class="product-card card border-0">
+                   <a href="Camera4.html"><img class="img-fluid" src="Img/Canon EOS R6.png" alt=""></a>
                     <h4>Canon EOS R6</h4>
                     <p><b>Canon EOS R6 – Full-frame mirrorless camera with a 20 MP sensor, exceptionally fast autofocus, in-body stabilization, and excellent low-light performance. Suitable for sports, events, and video.</b></p>
                     <span class="price">€2,200</span>
                 </article>
-                <article class="product-card">
-                    <a href="Camera3.html"><img src="Img/Canon EOS R10.jpg" alt=""></a>
+                <article class="product-card card border-0">
+                    <a href="Camera3.html"><img class="img-fluid" src="Img/Canon EOS R10.jpg" alt=""></a>
                     <h4>Canon EOS R10</h4>
                     <p><b>Canon EOS R10 – Compact yet powerful mirrorless camera with rapid autofocus, a 24.2 MP sensor, and 4K video. Ideal for both photography and content creation.</b></p>
                     <span class="price">€1,080</span>
                 </article>
-                <article class="product-card">
-                    <a href="Camera2.Html"><img src="Img/Nikon.png" alt=""></a>
+                <article class="product-card card border-0">
+                    <a href="Camera2.Html"><img class="img-fluid" src="Img/Nikon.png" alt=""></a>
                     <h4>Nikon Z5 II</h4>
                     <p><b>Nikon Z5 II – Powerful full-frame mirrorless camera with a 24.5 MP sensor, fast autofocus, built-in image stabilization, and 4K video. Ideal for photography, travel, and content creation.</b></p>
                     <span class="price">€1,499</span>
                 </article>
-                <article class="product-card">
-                    <a href="camera1.html"><img src="Img/Lumix.png" alt=""></a>
+                <article class="product-card card border-0">
+                    <a href="camera1.html"><img class="img-fluid" src="Img/Lumix.png" alt=""></a>
                     <h4>Panasonic Lumix S5II</h4>
                     <p><b>Panasonic Lumix S5II – Full-frame mirrorless camera with a 24.2 MP sensor, strong phase-detect autofocus, built-in stabilization, and 6K/4K video. Popular for both photography and video.</b></p>
                     <span class="price">€1,800</span>
                 </article>
-                <article class="product-card">
-                    <a href="Camera5.Html"><img src="Img/Nikonn.png" alt="Nikon P1100"></a>
+                <article class="product-card card border-0">
+                    <a href="Camera5.Html"><img class="img-fluid" src="Img/Nikonn.png" alt="Nikon P1100"></a>
                     <h4>Nikon P1100</h4>
                     <p><b>Nikon P1100 – A superzoom bridge camera with an extraordinary 125x optical zoom, perfect for wildlife, birdwatching, and distant landscapes.</b></p>
                     <span class="price">€799</span>
